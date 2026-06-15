@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gislaine & Marcelo — 06 de Novembro de 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #faf7f2;
+    --warm: #f3ede3;
+    --blush: #e8d5c4;
+    --rose: #c4967a;
+    --deep: #8b5e4a;
+    --bark: #5c3d2e;
+    --sage: #8a9e8c;
+    --text: #3a2a20;
+    --muted: #8c7060;
+    --gold: #b8966a;
+    --line: rgba(140, 90, 70, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  nav a:hover { color: var(--rose); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(196,150,122,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(138,158,140,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    letter-spacing: 0.18em;
+    color: var(--rose);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 1;
+    color: var(--bark);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+  }
+
+  .hero-amp {
+    font-style: italic;
+    color: var(--rose);
+    font-size: 0.7em;
+  }
+
+  .hero-date {
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(0.65rem, 2vw, 0.8rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--rose), transparent);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .hero-place {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 1s 1.5s forwards;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 1.8s forwards;
+  }
+
+  .countdown-item { text-align: center; }
+
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 300;
+    color: var(--bark);
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .countdown-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--rose);
+    align-self: flex-start;
+    padding-top: 0.15rem;
+  }
+
+  @media (max-width: 480px) {
+    .countdown-sep { display: none; }
+    .countdown-item { flex: 0 0 40%; }
+  }
+
+  /* ── SECTION BASE ── */
+  .section-wrap {
+    padding: 6rem 1.5rem;
+  }
+
+  .section-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-tag::before, .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--bark);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  /* ── STORY ── */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    gap: 2rem;
+    margin-top: 3.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .story-line, .dot { display: none; }
+    .story-chapter { text-align: left !important; padding: 0 !important; }
+  }
+
+  .story-line {
+    background: linear-gradient(to bottom, transparent, var(--blush) 20%, var(--blush) 80%, transparent);
+    justify-self: center;
+    width: 2px;
+    min-height: 300px;
+  }
+
+  .story-chapter { position: relative; }
+  .story-chapter:first-child { padding-right: 2rem; text-align: right; }
+  .story-chapter:last-child { padding-left: 2rem; }
+
+  .chapter-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--bark);
+    margin-bottom: 0.7rem;
+  }
+
+  .chapter-text {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .dot {
+    position: absolute;
+    top: 1.1rem;
+    width: 12px; height: 12px;
+    background: var(--rose);
+    border-radius: 50%;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--rose);
+  }
+
+  .story-chapter:first-child .dot { right: -2.9rem; }
+  .story-chapter:last-child .dot { left: -2.9rem; }
+
+  .story-footer { text-align: center; margin-top: 3rem; }
+  .story-footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--rose);
+  }
+
+  /* ── FULL DIVIDER ── */
+  .full-divider {
+    background: var(--warm);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .full-divider p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--bark);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── DETAILS ── */
+  .detail-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    height: 100%;
+  }
+
+  .detail-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--rose);
+  }
+
+  .detail-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--bark);
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── GIFTS ── */
+  .gifts-intro {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 1rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gift-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    background: #fff;
+    height: 100%;
+  }
+
+  .gift-card:hover { border-color: var(--rose); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(140,90,70,0.08); }
+  .gift-card.selected { border-color: var(--rose); background: rgba(196,150,122,0.06); }
+  .gift-card.taken { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+  .gift-badge {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-size: 0.63rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .badge-available { background: rgba(138,158,140,0.15); color: var(--sage); }
+  .badge-selected  { background: rgba(196,150,122,0.2);  color: var(--rose); }
+  .badge-taken     { background: rgba(140,112,96,0.1);   color: var(--muted); }
+
+  .gift-icon  { font-size: 2rem; margin-bottom: 1rem; }
+  .gift-name  { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--bark); margin-bottom: 0.4rem; }
+  .gift-desc  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .gift-price { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--rose); font-style: italic; }
+
+  .gift-check {
+    display: none;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px; height: 48px;
+    background: var(--rose);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .gift-card.selected .gift-check { display: flex; }
+
+  /* ── RSVP ── */
+  #rsvp { background: var(--warm); }
+
+  .form-label-custom {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input-custom {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-input-custom:focus { border-color: var(--rose); box-shadow: none; }
+
+  .form-radio-group { display: flex; gap: 1rem; }
+
+  .form-radio {
+    flex: 1;
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: all 0.3s;
+    user-select: none;
+  }
+
+  .form-radio:hover { border-color: var(--rose); color: var(--rose); }
+  .form-radio.active { border-color: var(--rose); background: rgba(196,150,122,0.08); color: var(--rose); }
+
+  @media (max-width: 480px) {
+    .form-radio-group { flex-direction: column; }
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--bark);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 1rem;
+  }
+
+  .btn-submit:hover { background: var(--rose); }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  /* ── SUCCESS ── */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 2rem;
+  }
+
+  .success-msg.show { display: block; }
+
+  .success-msg p:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--rose);
+    margin-bottom: 0.5rem;
+  }
+
+  .success-msg p:last-child { color: var(--muted); font-size: 0.9rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bark);
+    color: var(--blush);
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  footer .names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  footer .names em { font-style: italic; color: var(--rose); }
+
+  footer p {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-top: 0.8rem;
+  }
+
+  /* ── MODAL ── */
+  .modal-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(58,42,32,0.55);
+    z-index: 200;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+
+  .modal-bg.open { display: flex; }
+
+  .modal {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 2.5rem 2rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin: auto;
+  }
+
+  @media (max-width: 576px) {
+    .modal-bg { padding: 0; align-items: flex-end; }
+    .modal { border-radius: 12px 12px 0 0; max-width: 100%; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    color: var(--bark);
+    margin-bottom: 0.3rem;
+  }
+
+  .modal p {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .modal-price-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--rose);
+    margin-bottom: 0.4rem;
+  }
+
+  .modal-sep { height: 1px; background: var(--line); margin: 1.2rem 0; }
+
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+
+  .step-label {
+    font-size: 0.63rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1rem;
+  }
+
+  .modal-input {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text);
+    outline: none;
+    background: #fff;
+    margin-bottom: 0.8rem;
+    transition: border-color 0.3s;
+    text-align: left;
+  }
+
+  .modal-input:focus { border-color: var(--rose); }
+
+  .modal-btns { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+
+  .btn-cancel {
+    flex: 1;
+    padding: 0.9rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-cancel:hover { border-color: var(--muted); }
+
+  .btn-confirm {
+    flex: 2;
+    padding: 0.9rem;
+    background: var(--bark);
+    color: var(--cream);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+
+  .btn-confirm:hover { background: var(--rose); }
+
+  /* ── PAY TABS ── */
+  .pay-tabs {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .pay-tab {
+    flex: 1;
+    padding: 0.8rem;
+    background: #fff;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .pay-tab + .pay-tab { border-left: 1px solid var(--line); }
+  .pay-tab:hover { background: var(--warm); }
+  .pay-tab.active { background: var(--bark); color: var(--cream); }
+
+  .pix-box {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.5rem;
+    background: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .pix-key-label {
+    font-size: 0.63rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .pix-key {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--bark);
+    margin-bottom: 0.8rem;
+    word-break: break-all;
+  }
+
+  .pix-qr {
+    width: 150px; height: 150px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-svg { width: 130px; height: 130px; }
+
+  .pix-copy-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--rose);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--rose);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .pix-copy-btn:hover { background: var(--rose); color: white; }
+  .pix-copy-btn.copied { background: var(--sage); border-color: var(--sage); color: white; }
+
+  .card-row { display: flex; gap: 0.8rem; margin-bottom: 0.8rem; }
+  .card-row .modal-input { flex: 1; margin-bottom: 0; }
+
+  @media (max-width: 400px) {
+    .card-row { flex-direction: column; }
+    .card-row .modal-input { margin-bottom: 0.8rem; }
+  }
+
+  .card-brand-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .card-brand {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+    background: #fff;
+  }
+
+  .install-select {
+    width: 100%;
+    padding: 0.85rem 2.5rem 0.85rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text);
+    outline: none;
+    background-color: #fff;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c7060' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  .install-select:focus { border-color: var(--rose); }
+
+  .pay-success { text-align: center; padding: 1rem 0; }
+
+  .pay-success .check-circle {
+    width: 60px; height: 60px;
+    background: rgba(138,158,140,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: var(--sage);
+  }
+
+  .pay-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--rose);
+    margin-bottom: 0.5rem;
+  }
+
+  .pay-success p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 0; }
+
+  .secure-badge {
+    font-size: 0.7rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── BOOTSTRAP OVERRIDES ── */
+  .container, .container-fluid { --bs-gutter-x: 1.5rem; }
+
+  select.form-input-custom {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c7060' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#historia">Nossa história</a>
+  <a href="#detalhes">Detalhes</a>
+  <a href="#presentes">Presentes</a>
+  <a href="#rsvp">Confirmação</a>
+</nav>
+
+<!-- ─────────── HERO ─────────── -->
+<section id="hero">
+  <p class="hero-ornament">convidamos você a celebrar o nosso amor</p>
+  <h1 class="hero-names">Gislaine <span class="hero-amp">&amp;</span> Marcelo</h1>
+  <p class="hero-date">06 · Novembro · 2026 · Sexta-Feira</p>
+  <div class="hero-divider"></div>
+  <p class="hero-place">Aparecida Do Norte — São Paulo, SP</p>
+  <div class="countdown" id="countdown">
+    <div class="countdown-item"><div class="countdown-num" id="cd-d">--</div><div class="countdown-label">dias</div></div>
+    <div class="countdown-sep">·</div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-h">--</div><div class="countdown-label">horas</div></div>
+    <div class="countdown-sep">·</div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-m">--</div><div class="countdown-label">minutos</div></div>
+    <div class="countdown-sep">·</div>
+    <div class="countdown-item"><div class="countdown-num" id="cd-s">--</div><div class="countdown-label">segundos</div></div>
+  </div>
+</section>
+
+<!-- ─────────── HISTÓRIA ─────────── -->
+<section id="historia" class="section-wrap">
+  <div class="container" style="max-width:960px">
+
+    <div class="section-tag reveal">Nossa História</div>
+    <h2 class="section-title reveal">Como tudo <em>começou</em></h2>
+
+    <!-- Grid 1 -->
+    <div class="story-grid reveal">
+      <div class="story-chapter">
+        <div class="dot"></div>
+        <div class="chapter-year">2012</div>
+        <h3 class="chapter-title">O primeiro encontro</h3>
+        <p class="chapter-text">02 de novembro. Foi nessa data que Deus cruzou nossos caminhos e começou a escrever a nossa história de amor. Desde então, vivemos juntos momentos únicos, construindo uma relação baseada em amor, companheirismo, amizade e fé.</p>
+        <p class="chapter-text">Em 2012, nos conhecemos e, ao longo desses 13 anos juntos, aprendemos a crescer lado a lado, enfrentando desafios, celebrando conquistas e fortalecendo ainda mais o nosso amor.</p>
+      </div>
+      <div class="story-line"></div>
+      <div class="story-chapter" style="padding-top:3rem">
+        <div class="dot"></div>
+        <div class="chapter-year">2015</div>
+        <h3 class="chapter-title">O Pedido</h3>
+        <p class="chapter-text">Em 2015, vivemos um momento marcante: em uma visita à igreja, o Marcelo fez o pedido que mudaria nossas vidas. Ali, naquele ambiente de paz, decidimos dar um passo maior, trocamos alianças e ficamos noivos, fortalecendo ainda mais o nosso compromisso.</p>
+      </div>
+    </div>
+
+    <!-- Grid 2 -->
+    <div class="story-grid reveal" style="margin-top:0">
+      <div class="story-chapter" style="padding-top:1rem">
+        <div class="dot"></div>
+        <div class="chapter-year">2016</div>
+        <h3 class="chapter-title">Nosso Maior Presente</h3>
+        <p class="chapter-text">E então, no dia 04/07/2016, recebemos o maior presente das nossas vidas: o nascimento do nosso filho, Vitor Hugo, fruto do nosso amor e a maior representação da família que estamos construindo.</p>
+      </div>
+      <div class="story-line" style="min-height:200px"></div>
+      <div class="story-chapter" style="padding-top:4rem">
+        <div class="dot"></div>
+        <div class="chapter-year">2026</div>
+        <h3 class="chapter-title">Realização de um Sonho</h3>
+        <p class="chapter-text">Hoje, com os corações cheios de gratidão, damos mais um passo importante da nossa história: o nosso casamento. Mais do que uma celebração, esse momento representa tudo o que vivemos até aqui e todos os sonhos que ainda vamos realizar juntos.</p>
+        <p class="chapter-text">Estamos muito felizes em compartilhar esse capítulo tão especial com as pessoas que amamos. Que Deus continue abençoando nossa união e nossa família, hoje e sempre. Com amor, Gislaine &amp; Marcelo.</p>
+      </div>
+    </div>
+
+    <div class="story-footer reveal">
+      <p>« E o melhor capítulo ainda está por vir. »</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── CITAÇÃO ─────────── -->
+<div class="full-divider">
+  <p class="reveal">"Amar é encontrar na felicidade do outro a própria felicidade."</p>
+</div>
+
+<!-- ─────────── DETALHES ─────────── -->
+<section id="detalhes" class="section-wrap">
+  <div class="container" style="max-width:860px">
+
+    <div class="section-tag reveal">O Grande Dia</div>
+    <h2 class="section-title reveal">Detalhes da <em>Celebração</em></h2>
+
+    <div class="row g-3 mt-3 reveal">
+      <div class="col-12 col-md-4">
+        <div class="detail-card">
+          <div class="detail-icon">◷</div>
+          <div class="detail-title">Horário</div>
+          <div class="detail-text">
+            Cerimônia às <strong>16h00</strong><br>
+            Recepção às 18h30<br>
+            Festa até às 01h00
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="detail-card">
+          <div class="detail-icon">◎</div>
+          <div class="detail-title">Local</div>
+          <div class="detail-text">
+            Capela São José<br>
+            Santuário Nacional de<br>Nossa Senhora Aparecida<br>
+            Aparecida do Norte, SP
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="detail-card">
+          <div class="detail-icon">◈</div>
+          <div class="detail-title">Traje</div>
+          <div class="detail-text">
+            Esporte fino<br>
+            Pedimos evitar<br>
+            o branco e o preto
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── PRESENTES ─────────── -->
+<section id="presentes" class="section-wrap">
+  <div class="container" style="max-width:980px">
+
+    <div class="section-tag reveal">Lista de Presentes</div>
+    <h2 class="section-title reveal">Escolha um <em>presente</em></h2>
+    <p class="gifts-intro reveal">Cada presente nesta lista foi escolhido com carinho. Escolha aquele que combina com você — será uma alegria saber que veio de quem amamos.</p>
+
+    <div class="row g-3 mt-3 reveal" id="giftsGrid"></div>
+
+    <p class="form-note reveal mt-4">Sua escolha ficará reservada para você. Agradecemos imensamente o gesto.</p>
+
+  </div>
+</section>
+
+<!-- ─────────── RSVP ─────────── -->
+<section id="rsvp" class="section-wrap">
+  <div class="container" style="max-width:560px">
+
+    <div class="section-tag reveal">RSVP</div>
+    <h2 class="section-title reveal">Confirme sua <em>Presença</em></h2>
+    <p class="reveal" style="text-align:center; color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; margin-top:0.5rem">Pedimos a gentileza de confirmar até <strong>31 de maio de 2025</strong>.</p>
+
+    <div id="rsvpForm" class="reveal">
+
+      <div class="mb-3">
+        <label class="form-label-custom">Nome completo</label>
+        <input type="text" class="form-input-custom" id="guestName" placeholder="Seu nome">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label-custom">E-mail</label>
+        <input type="email" class="form-input-custom" id="guestEmail" placeholder="seu@email.com">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label-custom">Número de acompanhantes</label>
+        <select class="form-input-custom" id="guestCount">
+          <option value="0">Apenas eu</option>
+          <option value="1">Eu + 1</option>
+          <option value="2">Eu + 2</option>
+          <option value="3">Eu + 3</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label-custom">Você poderá comparecer?</label>
+        <div class="form-radio-group">
+          <div class="form-radio" id="radio-yes" onclick="selectRadio('yes')">✦ Sim, estarei lá!</div>
+          <div class="form-radio" id="radio-no"  onclick="selectRadio('no')">Com pesar, não poderei</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label-custom">Restrições alimentares</label>
+        <input type="text" class="form-input-custom" id="guestDiet" placeholder="Ex.: vegetariano, sem glúten...">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label-custom">Uma mensagem para os noivos (opcional)</label>
+        <textarea class="form-input-custom" rows="3" id="guestMsg" placeholder="Deixe um desejo, uma lembrança..."></textarea>
+      </div>
+
+      <button class="btn-submit" onclick="submitRSVP()">Confirmar presença</button>
+      <p class="form-note">Confirmando, você nos ajuda a organizar o dia perfeito ♡</p>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <p>Que alegria!</p>
+      <p>Sua presença foi confirmada com sucesso. Contamos os dias para celebrar com você.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer>
+  <div class="names">Gislaine <em>&amp;</em> Marcelo</div>
+  <p>06 de Novembro de 2026 · Aparecida Do Norte · São Paulo</p>
+  <p style="margin-top:1.5rem; font-size:0.7rem;">Feito com amor para o nosso grande dia</p>
+</footer>
+
+<!-- ─────────── GIFT MODAL ─────────── -->
+<div class="modal-bg" id="giftModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <!-- STEP 1 -->
+    <div class="modal-step active" id="step1">
+      <div class="step-label">Passo 1 de 2 — Identificação</div>
+      <h3 id="modalGiftName">Nome do presente</h3>
+      <div class="modal-price-tag" id="modalGiftPrice">R$ 000</div>
+      <p id="modalGiftDesc">Descrição do presente selecionado.</p>
+      <div class="modal-sep"></div>
+      <input type="text"  class="modal-input" id="modalName"  placeholder="Seu nome completo">
+      <input type="email" class="modal-input" id="modalEmail" placeholder="Seu e-mail">
+      <div class="modal-btns">
+        <button class="btn-cancel"  onclick="closeModal()">Cancelar</button>
+        <button class="btn-confirm" onclick="goToPayment()">Escolher pagamento →</button>
+      </div>
+      <div class="secure-badge">🔒 Seus dados estão seguros</div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="modal-step" id="step2">
+      <div class="step-label">Passo 2 de 2 — Pagamento</div>
+      <h3 id="step2GiftName">Presente</h3>
+      <div class="modal-price-tag" id="step2Price">R$ 000</div>
+      <div class="modal-sep"></div>
+
+      <div class="pay-tabs">
+        <button class="pay-tab active" id="tab-pix"  onclick="switchTab('pix')">⬡ PIX</button>
+        <button class="pay-tab"        id="tab-card" onclick="switchTab('card')">▭ Cartão de Crédito</button>
+      </div>
+
+      <!-- PIX -->
+      <div id="panel-pix">
+        <div class="pix-box">
+          <div class="pix-key-label">Chave PIX</div>
+          <div class="pix-key">gislaine.marcelo.casamento@gmail.com</div>
+          <div class="pix-key-label">QR Code</div>
+          <div class="pix-qr">
+            <svg class="qr-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+              <rect width="130" height="130" fill="#fff"/>
+              <rect x="10" y="10" width="30" height="30" rx="2" fill="#3a2a20"/>
+              <rect x="15" y="15" width="20" height="20" rx="1" fill="#fff"/>
+              <rect x="19" y="19" width="12" height="12" rx="1" fill="#3a2a20"/>
+              <rect x="90" y="10" width="30" height="30" rx="2" fill="#3a2a20"/>
+              <rect x="95" y="15" width="20" height="20" rx="1" fill="#fff"/>
+              <rect x="99" y="19" width="12" height="12" rx="1" fill="#3a2a20"/>
+              <rect x="10" y="90" width="30" height="30" rx="2" fill="#3a2a20"/>
+              <rect x="15" y="95" width="20" height="20" rx="1" fill="#fff"/>
+              <rect x="19" y="99" width="12" height="12" rx="1" fill="#3a2a20"/>
+              <rect x="50" y="10" width="4" height="4" fill="#3a2a20"/><rect x="58" y="10" width="4" height="4" fill="#3a2a20"/><rect x="66" y="10" width="8" height="4" fill="#3a2a20"/>
+              <rect x="50" y="18" width="8" height="4" fill="#3a2a20"/><rect x="62" y="18" width="4" height="4" fill="#3a2a20"/>
+              <rect x="50" y="26" width="4" height="4" fill="#3a2a20"/><rect x="58" y="26" width="12" height="4" fill="#3a2a20"/>
+              <rect x="10" y="50" width="4" height="4" fill="#3a2a20"/><rect x="18" y="50" width="8" height="4" fill="#3a2a20"/><rect x="30" y="50" width="4" height="4" fill="#3a2a20"/>
+              <rect x="10" y="58" width="12" height="4" fill="#3a2a20"/><rect x="26" y="58" width="8" height="4" fill="#3a2a20"/>
+              <rect x="10" y="66" width="4" height="4" fill="#3a2a20"/><rect x="18" y="66" width="4" height="4" fill="#3a2a20"/><rect x="26" y="66" width="8" height="4" fill="#3a2a20"/>
+              <rect x="50" y="50" width="30" height="30" rx="2" fill="none" stroke="#c4967a" stroke-width="2"/>
+              <rect x="56" y="56" width="18" height="18" rx="1" fill="#c4967a" opacity="0.3"/>
+              <rect x="62" y="62" width="6"  height="6"  rx="1" fill="#c4967a"/>
+              <rect x="86" y="50" width="4" height="4" fill="#3a2a20"/><rect x="94" y="50" width="8" height="4" fill="#3a2a20"/><rect x="106" y="50" width="14" height="4" fill="#3a2a20"/>
+              <rect x="86" y="58" width="8" height="4" fill="#3a2a20"/><rect x="98" y="58" width="4" height="4" fill="#3a2a20"/><rect x="106" y="58" width="4" height="4" fill="#3a2a20"/>
+              <rect x="86" y="66" width="4" height="4" fill="#3a2a20"/><rect x="94" y="66" width="4" height="4" fill="#3a2a20"/><rect x="102" y="66" width="8" height="4" fill="#3a2a20"/>
+              <rect x="50" y="86" width="8" height="4" fill="#3a2a20"/><rect x="62" y="86" width="4" height="4" fill="#3a2a20"/><rect x="70" y="86" width="8" height="4" fill="#3a2a20"/>
+              <rect x="50" y="94" width="4" height="4" fill="#3a2a20"/><rect x="58" y="94" width="12" height="4" fill="#3a2a20"/><rect x="74" y="94" width="4" height="4" fill="#3a2a20"/>
+              <rect x="50" y="102" width="12" height="4" fill="#3a2a20"/><rect x="66" y="102" width="4" height="4" fill="#3a2a20"/><rect x="74" y="102" width="4" height="4" fill="#3a2a20"/>
+              <rect x="86" y="86" width="4" height="4" fill="#3a2a20"/><rect x="94" y="86" width="12" height="4" fill="#3a2a20"/><rect x="110" y="86" width="10" height="4" fill="#3a2a20"/>
+              <rect x="86" y="94" width="8" height="4" fill="#3a2a20"/><rect x="98" y="94" width="4" height="4" fill="#3a2a20"/><rect x="106" y="94" width="4" height="4" fill="#3a2a20"/>
+              <rect x="86" y="102" width="14" height="4" fill="#3a2a20"/><rect x="104" y="102" width="8" height="4" fill="#3a2a20"/>
+            </svg>
+          </div>
+        </div>
+        <button class="pix-copy-btn" id="pixCopyBtn" onclick="copyPix()">Copiar chave PIX</button>
+        <p style="font-size:0.78rem;margin-top:0.8rem;color:var(--muted)">Após o pagamento, clique no botão abaixo para confirmar sua contribuição.</p>
+        <div class="modal-btns">
+          <button class="btn-cancel"  onclick="goBackStep()">← Voltar</button>
+          <button class="btn-confirm" onclick="finishPayment('pix')">Já fiz o pagamento ✓</button>
+        </div>
+      </div>
+
+      <!-- CARTÃO -->
+      <div id="panel-card" style="display:none">
+        <div class="card-brand-row">
+          <span class="card-brand">Visa</span>
+          <span class="card-brand">Mastercard</span>
+          <span class="card-brand">Elo</span>
+          <span class="card-brand">Amex</span>
+        </div>
+        <input type="text"  class="modal-input" id="cardName"   placeholder="Nome no cartão">
+        <input type="text"  class="modal-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCard(this)">
+        <div class="card-row">
+          <input type="text" class="modal-input" id="cardExpiry" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)">
+          <input type="text" class="modal-input" id="cardCvv"    placeholder="CVV"   maxlength="4">
+        </div>
+        <select class="install-select" id="installments"></select>
+        <div class="modal-btns">
+          <button class="btn-cancel"  onclick="goBackStep()">← Voltar</button>
+          <button class="btn-confirm" onclick="finishPayment('card')">Confirmar pagamento</button>
+        </div>
+        <div class="secure-badge">🔒 Pagamento seguro e criptografado</div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="modal-step" id="step3">
+      <div class="pay-success">
+        <div class="check-circle">✓</div>
+        <h3>Obrigado!</h3>
+        <p>Seu presente foi reservado com sucesso. Que alegria contar com você neste dia tão especial. ♡</p>
+        <div class="modal-sep"></div>
+        <p style="font-size:0.8rem">Você receberá uma confirmação no e-mail cadastrado.</p>
+        <div class="modal-btns" style="margin-top:1.5rem">
+          <button class="btn-confirm" style="flex:1" onclick="closeModal()">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ── COUNTDOWN ── */
+function updateCountdown() {
+  const wedding = new Date('2026-11-06T16:00:00');
+  const now     = new Date();
+  const diff    = wedding - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML =
+      '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.5rem;color:var(--rose)">Hoje é o grande dia! ♡</div>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000)  / 60000);
+  const s = Math.floor((diff % 60000)    / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ── GIFTS ── */
+const gifts = [
+  { id:1, icon:'🍳', name:'Kit de Cozinha',       desc:'Panelas antiaderentes premium, tábua de madeira e utensílios essenciais para a nova casa.', price:'R$ 320', valor:320, taken:false },
+  { id:2, icon:'🛏️', name:'Jogo de Cama',          desc:'Lençóis de algodão egípcio 400 fios — maciez e elegância para as noites juntos.',           price:'R$ 480', valor:480, taken:false },
+  { id:3, icon:'☕', name:'Máquina de Café',        desc:'Espresso automático com moedor integrado. Cafés perfeitos toda manhã.',                       price:'R$ 750', valor:750, taken:true  },
+  { id:4, icon:'🪴', name:'Vasos Decorativos',      desc:'Trio de vasos artesanais em cerâmica para enfeitar os espaços da nova casa.',                 price:'R$ 210', valor:210, taken:false },
+  { id:5, icon:'🍷', name:'Adega de Vinho',         desc:'Adega climatizada para até 12 garrafas — perfeita para celebrações futuras.',                 price:'R$ 890', valor:890, taken:false },
+  { id:6, icon:'🧴', name:'Kit de Aromaterapia',    desc:'Difusor elétrico e essências artesanais para um lar cheio de boas energias.',                 price:'R$ 190', valor:190, taken:false },
+  { id:7, icon:'📚', name:'Estante de Livros',      desc:'Estante modular em madeira maciça — para a coleção que continua crescendo.',                  price:'R$ 560', valor:560, taken:true  },
+  { id:8, icon:'🕯️', name:'Conjunto de Velas',      desc:'Velas artesanais perfumadas e candelabros dourados para jantares românticos.',                price:'R$ 140', valor:140, taken:false },
+  { id:9, icon:'🖼️', name:'Quadro de Arte',         desc:'Impressão de arte original assinada, emoldurada, pronta para decorar a sala.',               price:'R$ 380', valor:380, taken:false },
+];
+
+let selectedGift = null;
+const takenGifts = new Set(gifts.filter(g => g.taken).map(g => g.id));
+const myGift = { id: null };
+
+function renderGifts() {
+  const grid = document.getElementById('giftsGrid');
+  grid.innerHTML = gifts.map(g => {
+    const isTaken   = takenGifts.has(g.id) && myGift.id !== g.id;
+    const isSelected = myGift.id === g.id;
+    let cls   = 'gift-card h-100';
+    let badge = '<span class="gift-badge badge-available">Disponível</span>';
+    if (isTaken)    { cls += ' taken';    badge = '<span class="gift-badge badge-taken">Já escolhido</span>'; }
+    if (isSelected) { cls += ' selected'; badge = '<span class="gift-badge badge-selected">Sua escolha ♡</span>'; }
+    return `
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="${cls}" onclick="openGiftModal(${g.id})">
+          ${badge}
+          <div class="gift-check">✓</div>
+          <div class="gift-icon">${g.icon}</div>
+          <div class="gift-name">${g.name}</div>
+          <div class="gift-desc">${g.desc}</div>
+          <div class="gift-price">${g.price}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function openGiftModal(id) {
+  if (takenGifts.has(id) && myGift.id !== id) return;
+  selectedGift = gifts.find(g => g.id === id);
+  if (!selectedGift) return;
+  document.getElementById('modalGiftName').textContent = selectedGift.name;
+  document.getElementById('modalGiftPrice').textContent = selectedGift.price;
+  document.getElementById('modalGiftDesc').textContent = selectedGift.desc;
+  document.getElementById('modalName').value  = '';
+  document.getElementById('modalEmail').value = '';
+  showStep('step1');
+  document.getElementById('giftModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('giftModal').classList.remove('open');
+  selectedGift = null;
+}
+
+function showStep(stepId) {
+  ['step1','step2','step3'].forEach(id =>
+    document.getElementById(id).classList.toggle('active', id === stepId));
+}
+
+function goToPayment() {
+  const name  = document.getElementById('modalName').value.trim();
+  const email = document.getElementById('modalEmail').value.trim();
+  if (!name)                     { alert('Por favor, informe seu nome.');         return; }
+  if (!email || !email.includes('@')) { alert('Por favor, informe um e-mail válido.'); return; }
+  document.getElementById('step2GiftName').textContent = selectedGift.name;
+  document.getElementById('step2Price').textContent    = selectedGift.price;
+  buildInstallments(selectedGift.price);
+  showStep('step2');
+  switchTab('pix');
+}
+
+function goBackStep() { showStep('step1'); }
+
+function switchTab(tab) {
+  document.getElementById('tab-pix').classList.toggle('active',  tab === 'pix');
+  document.getElementById('tab-card').classList.toggle('active', tab === 'card');
+  document.getElementById('panel-pix').style.display  = tab === 'pix'  ? 'block' : 'none';
+  document.getElementById('panel-card').style.display = tab === 'card' ? 'block' : 'none';
+}
+
+function copyPix() {
+  const key = 'gislaine.marcelo.casamento@gmail.com';
+  navigator.clipboard.writeText(key).catch(() => {});
+  const btn = document.getElementById('pixCopyBtn');
+  btn.textContent = '✓ Chave copiada!';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = 'Copiar chave PIX'; btn.classList.remove('copied'); }, 3000);
+}
+
+function formatCard(el) {
+  let v = el.value.replace(/\D/g,'').substring(0,16);
+  el.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+
+function formatExpiry(el) {
+  let v = el.value.replace(/\D/g,'').substring(0,4);
+  if (v.length >= 2) v = v.substring(0,2) + '/' + v.substring(2);
+  el.value = v;
+}
+
+function buildInstallments(priceStr) {
+  const val = parseFloat(priceStr.replace('R$','').replace('.','').replace(',','.').trim());
+  const sel = document.getElementById('installments');
+  sel.innerHTML = '';
+  const max = val >= 600 ? 6 : val >= 300 ? 3 : 1;
+  for (let i = 1; i <= max; i++) {
+    const pv  = (val / i).toFixed(2).replace('.',',');
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i === 1 ? `1× de R$ ${pv} (à vista)` : `${i}× de R$ ${pv} sem juros`;
+    sel.appendChild(opt);
+  }
+}
+
+async function finishPayment(method) {
+  if (method === 'card') {
+    const num  = document.getElementById('cardNumber').value.replace(/\s/g,'');
+    const name = document.getElementById('cardName').value.trim();
+    const exp  = document.getElementById('cardExpiry').value;
+    const cvv  = document.getElementById('cardCvv').value;
+    if (!name || num.length < 16 || exp.length < 5 || cvv.length < 3) {
+      alert('Por favor, preencha todos os dados do cartão corretamente.'); return;
+    }
+  }
+
+  const btn = document.querySelector('#step2 .btn-confirm');
+  const orig = btn.textContent;
+  btn.textContent = 'Aguarde…';
+  btn.disabled = true;
+
+  try {
+    const parcelas = method === 'card'
+      ? parseInt(document.getElementById('installments').value)
+      : 1;
+
+    const response = await fetch('/api/criar-preferencia', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        presente: { id: selectedGift.id, name: selectedGift.name, desc: selectedGift.desc, valor: selectedGift.valor },
+        nome: document.getElementById('modalName').value.trim(),
+        email: document.getElementById('modalEmail').value.trim(),
+        parcelas,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok || !data.init_point) throw new Error(data.error || 'Erro ao iniciar pagamento');
+
+    if (myGift.id) takenGifts.delete(myGift.id);
+    myGift.id = selectedGift.id;
+    takenGifts.add(selectedGift.id);
+    renderGifts();
+
+    window.location.href = data.init_point;
+
+  } catch(err) {
+    alert('Não foi possível conectar ao sistema de pagamento. Tente novamente.\n\n' + err.message);
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
+renderGifts();
+
+/* ── RSVP ── */
+let rsvpChoice = null;
+
+function selectRadio(choice) {
+  rsvpChoice = choice;
+  document.getElementById('radio-yes').classList.toggle('active', choice === 'yes');
+  document.getElementById('radio-no').classList.toggle('active',  choice === 'no');
+}
+
+function submitRSVP() {
+  const name  = document.getElementById('guestName').value.trim();
+  const email = document.getElementById('guestEmail').value.trim();
+  if (!name || !email)  { alert('Por favor, preencha nome e e-mail.'); return; }
+  if (!rsvpChoice)      { alert('Por favor, indique se poderá comparecer.'); return; }
+  document.getElementById('rsvpForm').style.display = 'none';
+  document.getElementById('successMsg').classList.add('show');
+}
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── MODAL bg click ── */
+document.getElementById('giftModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
